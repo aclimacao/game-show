@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tribunal Técnico</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#3B1C8C;--glow:#5b2fd0;--y:#FFC400;--g:#2ECC71;--ink:#1d1140;--g1:linear-gradient(#ffffff0b 1px,transparent 1px);--g2:linear-gradient(90deg,#ffffff0b 1px,transparent 1px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#fff;font:500 1.1rem/1.35 Fredoka,system-ui,sans-serif;background:var(--g1) 0 0/32px 32px,var(--g2) 0 0/32px 32px,radial-gradient(circle at 15% 5%,var(--glow) 0,transparent 45%),var(--bg);background-attachment:fixed;transition:background-color .3s}
+body.ok{--bg:#14803d;--glow:#22c55e}body.no{--bg:#9f1239;--glow:#e11d48}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:.7rem 1rem;gap:.5rem}
+.tag{background:#ffffff26;border-radius:99px;padding:.25rem .9rem;font-size:1rem;display:inline-flex;align-items:center;gap:.4rem}
+.av{display:inline-grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:50%;font-size:1.05rem}
+main{max-width:620px;margin:0 auto;padding:0 1rem 2rem}
+.q{background:#fff;color:var(--ink);border-radius:18px;padding:1.1rem 1.3rem;font-size:1.3rem;font-weight:700;line-height:1.28;box-shadow:0 6px 0 #0003}
+.card{background:#ffffff1f;border-radius:18px;padding:1rem 1.2rem;margin-top:1rem}
+.card code{display:block;margin-top:.5rem;color:var(--y);font-family:Consolas,monospace;font-size:.95rem}
+.card small{display:block;opacity:.75;font-size:.85rem;margin-top:.6rem}
+#tm{position:relative;isolation:isolate;display:inline-grid;place-items:center;min-width:56px;height:56px;border-radius:50%;background:conic-gradient(var(--rc,var(--y)) var(--p,0%),#ffffff33 0);color:#fff;font-size:1.5rem;font-weight:700}
+#tm::after{content:"";position:absolute;inset:6px;border-radius:50%;background:#2a1370;z-index:-1}
+#tm.u{--rc:#FF4D6D;animation:pl .5s infinite alternate}@keyframes pl{to{transform:scale(1.1)}}
+.o{display:flex;align-items:center;gap:.9rem;width:100%;border:0;border-radius:16px;padding:1.05rem 1.2rem;margin-top:.8rem;font:inherit;font-size:1.4rem;font-weight:700;line-height:1.2;color:#fff;box-shadow:0 6px 0 #0003;text-align:left;cursor:pointer;transition:transform .08s,opacity .2s}
+.o:active:not(:disabled){transform:translateY(4px);box-shadow:0 2px 0 #0003}.o.dim{opacity:.35}.o.sel,.o.w{outline:5px solid #fff}
+.o:disabled{cursor:default}button:focus-visible,input:focus-visible{outline:4px solid #fff}
+.o .ck{margin-left:auto;font-style:normal;font-size:.8rem;background:#0003;border-radius:99px;padding:.15rem .6rem;white-space:nowrap}
+input{width:100%;font:inherit;font-size:1.3rem;padding:.8rem 1rem;border-radius:14px;border:0;color:var(--ink)}
+h3{margin:1.2rem 0 .3rem;font-size:1.1rem;opacity:.85}
+.row{display:flex;flex-wrap:wrap;gap:.45rem}
+.pk{font:inherit;font-size:1.6rem;background:#ffffff22;border:3px solid transparent;border-radius:14px;padding:.15rem .55rem;cursor:pointer;color:#fff}
+.pk.sel{border-color:#fff;background:#ffffff44}.cl{width:2.4rem;height:2.4rem;border-radius:50%;border:3px solid transparent;cursor:pointer}.cl.sel{border-color:#fff;transform:scale(1.15)}
+.gs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.gp{font:inherit;font-weight:700;font-size:1.15rem;color:var(--ink);border:4px solid transparent;border-radius:16px;padding:.7rem .4rem;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center}
+.gp span{font-size:1.9rem}.gp.sel{border-color:#fff;transform:scale(1.04);box-shadow:0 0 0 3px #0004}
+.go{width:100%;margin-top:1.2rem;font:inherit;font-weight:700;font-size:1.4rem;border:0;border-radius:14px;padding:.9rem;background:var(--g);color:var(--ink);box-shadow:0 5px 0 #1b8a4c;cursor:pointer}
+.go.sec{background:#ffffff33;color:#fff;box-shadow:0 5px 0 #0004}
+.big{font-size:2.6rem;font-weight:700;text-align:center;margin:.4rem 0}
+.pre{text-align:center;font-size:3rem;margin:.3rem}
+button.sn{font:inherit;background:#ffffff26;color:#fff;border:0;border-radius:99px;padding:.25rem .8rem;cursor:pointer}
+.rk{position:relative;background:#ffffff1a;border-radius:14px;padding:.65rem .9rem .8rem;margin-top:.55rem;overflow:hidden;display:flex;justify-content:space-between;align-items:center;font-size:1.25rem;font-weight:700}
+.rk i{position:absolute;left:0;bottom:0;height:7px;border-radius:0 7px 7px 0;transition:width .6s}
+.rk.me{outline:3px solid #fff;background:#ffffff33}
+.tp{display:flex;justify-content:space-between;background:#ffffff14;border-radius:12px;padding:.45rem .9rem;margin-top:.4rem;font-weight:700}
+</style></head><body>
+<header><span class="tag" id="who">Tribunal Técnico</span><span><span class="tag" id="pts"></span> <button class="sn" id="rkb" hidden>🏆 Ranking</button> <button class="sn" id="snd" aria-label="Som">🔇</button></span></header>
+<main><div id="v"></div><p id="err" hidden style="text-align:center;opacity:.8">Reconectando…</p></main>
+<script>
+const U="https://script.google.com/macros/s/AKfycbzNLVVfJC4cpRJ-yR8Ckv4MdK7sWLS7ceULoXpdeKM9OcfF2kFyQMpWMbAa5yZLnkPv/exec";
+const AN=["🦊","🐼","🐸","🦁","🐙","🐧","🦄","🐯","🐨","🐵","🐰","🦖"],HT=["🎩","🧢","👑","🎓","🤠","👒","🎧","🕶️"],KC=["#FF4D6D","#2D9CFF","#FFC400","#2ECC71","#C084FC","#F472B6","#FB923C","#22D3EE"],EM=["🚀","🦉","🔥","⚡","🌊","🍀","🎯","🛠️","💾","🧠"],CO=["#2D9CFF","#FF4D6D","#FFC400","#2ECC71"],SH="▲◆●■";
+/* níveis: prefixo (sem acento) · cor · ícone · nome */
+const LV=[["aquec","#2ECC71","🟢","Aquecimento"],["tec","#2D9CFF","🔵","Técnico"],["peri","#FF4D6D","🔴","Perícia"]];
+const lv=t=>{const s=String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();return LV.find(x=>s.startsWith(x[0]))||["","#C084FC","⚪",String(t||"")]};
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let me=null;try{me=JSON.parse(localStorage.getItem("tt2"))}catch(e){}
+let pk={n:"",a:0,h:0,k:0,g:null,novo:false,gn:"",ge:0},GR=[],S={st:{fase:"lobby"},me:{}},L={},off=0,last=-9,AC=null,snd=false,lastF=null,showRk=false,R=null,fimOpened=false;
+const POST=b=>fetch(U,{method:"POST",body:JSON.stringify(b)}).then(r=>r.json());
+/* som opcional (padrão desligado) */
+function tone(f,d=.15,t="triangle",v=.1,at=0){if(!snd)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+at;o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+$("snd").onclick=()=>{snd=!snd;$("snd").textContent=snd?"🔊":"🔇";tone(660,.1)};
+/* ranking */
+async function loadRk(){try{R=await(await fetch(U+"?a=p")).json()}catch(e){}if(showRk)render()}
+window.rk=()=>{showRk=!showRk;if(showRk){R=null;loadRk()}render();window.scrollTo(0,0)};
+$("rkb").onclick=window.rk;
+function rankView(){
+ const bk=`<button class="go sec" onclick="rk()">← Voltar</button>`;
+ let h=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem"><span class="tag">🏆 Ranking dos grupos</span><span id="tm"></span></div>`;
+ if(!R)return h+`<p style="text-align:center">Carregando…</p>`+bk;
+ const gr=R.gr||GR,t=Object.entries(R.gs||{}).map(([g,x])=>({g:+g,m:x.m,a:x.s/x.m})).sort((a,b)=>b.a-a.a),mx=Math.max(1,...t.map(x=>x.a)),pos=t.findIndex(x=>x.g===me.g);
+ if(!t.length)h+=`<p style="text-align:center">Sem pontos ainda.</p>`;
+ else{if(pos>=0)h+=`<p style="text-align:center;font-size:1.25rem;margin:.3rem 0">Seu grupo está em <b>${pos+1}º lugar</b></p>`;
+  h+=t.map((x,i)=>{const g=gr[x.g]||["?","#aaa","⭐"];return `<div class="rk ${x.g===me.g?"me":""}"><span>${["🥇","🥈","🥉"][i]||i+1+"º"} ${esc(g[2])} ${esc(g[0])}</span><span>${Math.round(x.a)} pts</span><i style="width:${Math.max(3,x.a/mx*100)}%;background:${esc(g[1])}"></i></div>`}).join("")}
+ if((R.top||[]).length)h+=`<h3>Melhores alunos</h3>`+R.top.map((x,i)=>`<div class="tp"><span>${["🥇","🥈","🥉"][i]} ${esc(x[0])}</span><span>${x[1]}</span></div>`).join("");
+ return h+`<p style="text-align:center;font-size:.85rem;opacity:.75">Ranking = média de pontos dos alunos do grupo.</p>`+bk}
+/* cadastro */
+async function loadG(){try{const g=(await(await fetch(U+"?a=g")).json()).gr||[],ch=JSON.stringify(g)!==JSON.stringify(GR);GR=g;if(!me&&ch&&!pk.novo&&!document.activeElement.matches("input"))form()}catch(e){}}
+function join(){POST({a:"join",u:me.u,n:me.n,g:me.g,v:me.v,k:me.k}).catch(()=>{})}
+window.pick=(k,i)=>{pk[k]=i;pk.novo=k==="g"?false:pk.novo;form()};
+window.novoG=()=>{pk.novo=true;pk.g=null;form()};
+window.entrar=async()=>{
+ if(!pk.n.trim())return alert("Digite seu nome.");
+ if(pk.novo){if(!pk.gn.trim())return alert("Digite o nome do grupo.");
+  const r=await POST({a:"grp",n:pk.gn,c:KC[(GR.length+3)%KC.length],e:EM[pk.ge]});GR=r.gr;pk.g=r.i}
+ if(pk.g==null)return alert("Escolha o seu grupo.");
+ me={u:"u"+Math.random().toString(36).slice(2,10),n:pk.n.trim(),g:pk.g,v:HT[pk.h]+AN[pk.a],k:KC[pk.k]};
+ try{localStorage.setItem("tt2",JSON.stringify(me))}catch(e){}join();tone(523,.1);tone(784,.15,"triangle",.1,.1);render()};
+function form(){
+ $("v").innerHTML=`<div class="big">Entre no tribunal</div>
+ <h3>Seu nome</h3><input placeholder="Nome e sobrenome" autocomplete="off" maxlength="24" value="${esc(pk.n)}" oninput="pk.n=this.value">
+ <h3>Seu avatar</h3><div class="pre"><span class="av" style="background:${KC[pk.k]};width:5rem;height:5rem;font-size:2.6rem">${HT[pk.h]}${AN[pk.a]}</span></div>
+ <div class="row">${AN.map((x,i)=>`<button class="pk ${pk.a===i?"sel":""}" onclick="pick('a',${i})">${x}</button>`).join("")}</div>
+ <div class="row" style="margin-top:.5rem">${HT.map((x,i)=>`<button class="pk ${pk.h===i?"sel":""}" onclick="pick('h',${i})">${x}</button>`).join("")}</div>
+ <div class="row" style="margin-top:.6rem">${KC.map((c,i)=>`<button class="cl ${pk.k===i?"sel":""}" style="background:${c}" aria-label="cor ${i+1}" onclick="pick('k',${i})"></button>`).join("")}</div>
+ <h3>Seu grupo</h3><div class="gs">${GR.map((g,i)=>`<button class="gp ${pk.g===i&&!pk.novo?"sel":""}" style="background:${esc(g[1])}" onclick="pick('g',${i})"><span>${esc(g[2])}</span>${esc(g[0])}</button>`).join("")}
+ <button class="gp ${pk.novo?"sel":""}" style="background:#ffffff33;color:#fff" onclick="novoG()"><span>➕</span>Meu grupo não está aqui</button></div>
+ ${pk.novo?`<input style="margin-top:.7rem" placeholder="Nome do seu grupo" maxlength="20" value="${esc(pk.gn)}" oninput="pk.gn=this.value"><div class="row" style="margin-top:.5rem">${EM.map((x,i)=>`<button class="pk ${pk.ge===i?"sel":""}" onclick="pick('ge',${i});pk.novo=true">${x}</button>`).join("")}</div>`:""}
+ <button class="go" onclick="entrar()">Entrar</button>`}
+window.votar=i=>{const f=S.st.fase;if(f!=="leitura"&&f!=="final")return;
+ if(f==="leitura")L.p=i;else L.f=i;tone(440+i*110,.1);render();
+ POST({a:"vote",u:me.u,i}).catch(()=>{})};
+function render(){
+ $("rkb").hidden=!me;$("rkb").textContent=showRk?"← Caso":"🏆 Ranking";
+ if(!me){$("who").textContent="Tribunal Técnico";$("pts").textContent="";return}
+ $("who").innerHTML=`<span class="av" style="background:${esc(me.k)}">${esc(me.v)}</span>${esc(me.n)}`;$("pts").textContent=(S.me.pts||0)+" pts";
+ const st=S.st,f=st.fase||"lobby",q=st.q,rev=st.rev,v=$("v");document.body.className="";
+ if(f==="fim"&&!fimOpened){fimOpened=true;showRk=true;loadRk()}
+ if(showRk){v.innerHTML=rankView();return}
+ if(f==="lobby"||(!q&&f!=="fim")){v.innerHTML=`<div class="big">Você está dentro!</div><p style="text-align:center">Olhe para o telão. O primeiro caso já vai começar.</p>`;return}
+ if(f==="fim"){v.innerHTML=`<div class="big">Fim do julgamento</div><p style="text-align:center;font-size:1.4rem">Você fez <b>${S.me.pts||0}</b> pontos</p><button class="go" onclick="rk()">🏆 Ver ranking</button>`;return}
+ const sel=f==="final"||f==="revela"?L.f:L.p,live=f==="leitura"||f==="final",N=lv(q.t);
+ let h=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;gap:.5rem"><span class="tag" style="background:${N[1]}40;border:2px solid ${N[1]}">${N[2]} ${esc(N[3])} · Caso ${q.n}/${q.tot}</span><span id="tm"></span></div><div class="q">${esc(q.q)}</div>`;
+ const opts=q.o.map((o,i)=>{let c="",mk="";if(f==="revela"){c=i===rev.g?"w":"dim";mk=i===rev.g?"✔ correta":(i===L.f?"✖ sua resposta":"")}else if(sel===i){c="sel";mk="✔ sua resposta"}
+  return `<button class="o ${c}" style="background:${CO[i]};color:${i==2?"#1d1140":"#fff"}" ${live?`onclick="votar(${i})"`:"disabled"}><span>${SH[i]}</span><span>${esc(o)}</span>${mk?`<em class="ck">${mk}</em>`:""}</button>`}).join("");
+ if(f==="revela"){const ok=L.f===rev.g,gn=S.me.gain||0;document.body.className=ok?"ok":"no";
+  if(lastF!=="revela")ok?[523,659,784].forEach((x,i)=>tone(x,.2,"triangle",.12,i*.12)):tone(160,.4,"sawtooth",.08);
+  h=`<div class="big">${ok?"Acertou!":L.f==null?"Sem resposta":"Errou"}</div><p class="big" style="margin-top:0">${gn?"+"+gn:"0"} pontos</p>`+h+opts+`<div class="card">${esc(rev.e)}<code>${esc(rev.w)}</code><small>Como verificar no Windows</small></div>`}
+ else{h+=opts;
+  if(f==="leitura")h+=`<p style="text-align:center">Escolha agora. Dá para mudar até o tempo acabar.</p>`;
+  if(f==="discussao")h+=`<div class="card" style="text-align:center;font-size:1.3rem">Hora de discutir! Converse com seu grupo antes do voto final.</div>`;
+  if(f==="final")h+=`<p style="text-align:center">Toque na resposta para confirmar. Este voto vale os pontos: quanto mais rápido, mais pontos.</p>`}
+ lastF=f;v.innerHTML=h}
+async function poll(){let iv=2500;
+ if(me){try{const r=await(await fetch(U+"?a=s&u="+me.u)).json();$("err").hidden=true;off=r.now-Date.now();iv=r.iv||2500;
+  if(!r.me.ok)join();if(r.st.caso!==last){L={};last=r.st.caso}
+  S=r;if(L.p==null)L.p=r.me.p;if(L.f==null)L.f=r.me.f;if(showRk)loadRk();render()}catch(e){$("err").hidden=false}}
+ setTimeout(poll,iv+Math.random()*600)}
+setInterval(()=>{const t=$("tm");if(!t)return;const e=S.st.fimEm,r=e?Math.max(0,(e-(Date.now()+off))/1000):0;
+ t.textContent=e?Math.ceil(r):"";t.style.visibility=e?"visible":"hidden";t.style.setProperty("--p",(e&&S.st.dur?Math.min(100,r/S.st.dur*100):0)+"%");t.classList.toggle("u",!!e&&r<=5)},250);
+setInterval(()=>{if(!me)loadG()},6000);
+if(!me)form();render();loadG();poll();
+</script></body></html>
