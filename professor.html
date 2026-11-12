@@ -3,116 +3,158 @@
 <title>Tribunal Técnico · Professor</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#3B1C8C;--y:#FFC400;--g:#2ECC71;--ink:#1d1140;--g1:linear-gradient(#ffffff0b 1phttps://script.google.com/macros/s/AKfycbwtk0w7kobFnG8HGpC7BiN5WQv162n0s4KV9Ee7NpAeePDb3DJCYtoZewcWdI2BL9Zv/execx,transparent 1px);--g2:linear-gradient(90deg,#ffffff0b 1px,transparent 1px)}
+:root{--bg:#3B1C8C;--y:#FFC400;--g:#2ECC71;--ink:#1d1140;--r:#FF4D6D}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:#fff;font:500 1.3rem/1.35 Fredoka,system-ui,sans-serif;background:var(--g1) 0 0/36px 36px,var(--g2) 0 0/36px 36px,radial-gradient(circle at 15% 10%,#5b2fd0 0,transparent 45%),radial-gradient(circle at 90% 90%,#7a2bc4 0,transparent 40%),var(--bg);background-attachment:fixed}
-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;gap:1rem}
-.tag{background:#ffffff26;border-radius:99px;padding:.3rem 1.1rem;font-size:1.1rem}
-#tm{position:relative;isolation:isolate;display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:conic-gradient(var(--rc,var(--y)) var(--p,0%),#ffffff33 0);color:#fff;font-size:2.4rem;font-weight:700}
-#tm::after{content:"";position:absolute;inset:8px;border-radius:50%;background:#2a1370;z-index:-1}
-#tm.u{--rc:#FF4D6D;animation:p .5s infinite alternate}@keyframes p{to{transform:scale(1.12)}}
-main{padding:0 2rem 1rem;max-width:1300px;margin:0 auto}
-.q{background:#fff;color:var(--ink);border-radius:22px;padding:1.6rem 2.2rem;font-size:2.3rem;line-height:1.25;font-weight:700;box-shadow:0 8px 0 #0003;text-align:center}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
-.o{display:flex;align-items:center;gap:1rem;border-radius:16px;padding:1.2rem 1.5rem;font-size:1.9rem;font-weight:700;box-shadow:0 6px 0 #0003}
-.o s{text-decoration:none;font-size:2.2rem}.o{position:relative}.o.x{opacity:.28}.o .pc2{margin-left:auto;font-size:1.3rem;background:#0003;border-radius:99px;padding:.1rem .8rem;white-space:nowrap}.lvl{display:inline-flex;gap:.4rem;align-items:center;border:2px solid;border-radius:99px;padding:.1rem .8rem;font-size:1rem;margin:.2rem}.o.w{outline:6px solid #fff;transform:scale(1.03)}
-.ex{background:#ffffff1f;border-radius:16px;padding:1rem 1.5rem;margin-top:1rem;font-size:1.3rem}
-.ex code{display:block;margin-top:.5rem;color:var(--y);font-family:Consolas,monospace;font-size:1.1rem}
-.big{text-align:center;font-size:3.6rem;font-weight:700;margin:.5rem 0}
-.pls{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem}.pl{background:#ffffff22;border:3px solid;border-radius:99px;padding:.2rem .9rem;font-size:1.15rem;display:inline-flex;align-items:center;gap:.4rem}
-.av{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;font-size:1.1rem}
-.rk{display:grid;grid-template-columns:230px 1fr 80px;gap:.8rem;align-items:center;margin:.55rem 0;font-size:1.5rem}
-.rk i{display:block;height:34px;border-radius:10px;transition:width .8s}
-.pod{display:flex;align-items:flex-end;justify-content:center;gap:1rem;margin:1rem 0}.pc{width:200px;border-radius:16px 16px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:.8rem;color:var(--ink);font-weight:700;font-size:1.5rem}.pc b{font-size:2.6rem}.pc small{font-size:1.3rem}
-.ft{display:flex;gap:1rem;align-items:center;padding:0 2rem 2rem;max-width:1300px;margin:0 auto}
-button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:.8rem 1.8rem;cursor:pointer;background:var(--g);color:var(--ink);box-shadow:0 5px 0 #1b8a4c;font-size:1.4rem}
-button.s{background:#ffffff26;color:#fff;box-shadow:none;font-size:1rem;padding:.4rem .9rem}
-.tp{display:inline-block;background:#ffffff22;border-radius:99px;padding:.2rem 1rem;margin:.2rem}
-button:focus-visible{outline:4px solid #fff}
+body{margin:0;min-height:100vh;color:#fff;font:500 1.05rem/1.35 Fredoka,system-ui,sans-serif;background:linear-gradient(#ffffff0b 1px,transparent 1px) 0 0/36px 36px,linear-gradient(90deg,#ffffff0b 1px,transparent 1px) 0 0/36px 36px,radial-gradient(circle at 15% 0,#5b2fd0 0,transparent 45%),var(--bg);background-attachment:fixed}
+main{max-width:1180px;margin:0 auto;padding:.8rem 1rem 3rem}
+h1{margin:.3rem 0;font-size:1.8rem}h2{margin:1rem 0 .4rem;font-size:1.2rem}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:.55rem 1rem;cursor:pointer;background:#ffffff2a;color:#fff}
+button:hover{background:#ffffff40}button:disabled{opacity:.45;cursor:default}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #fff}
+button.p{background:var(--g);color:var(--ink);box-shadow:0 4px 0 #1b8a4c}button.p:hover{background:#3ee07f}
+button.d{background:var(--r);color:#fff}
+input,select{font:inherit;font-size:1.1rem;padding:.55rem .8rem;border-radius:10px;border:0;color:var(--ink);background:#fff}
+.bar{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}.sp{flex:1}
+.card{background:#ffffff1c;border-radius:16px;padding:.9rem 1.1rem;margin-top:.8rem}
+.code{font-size:2.4rem;font-weight:700;letter-spacing:.2em;background:#fff;color:var(--ink);border-radius:12px;padding:0 .7rem}
+.tabs{display:flex;gap:.4rem;margin-top:.8rem;flex-wrap:wrap}.tabs button.on{background:#fff;color:var(--ink)}
+.pill{background:#ffffff26;border-radius:99px;padding:.15rem .8rem;font-size:.95rem}
+.biggo{width:100%;font-size:1.7rem;padding:1rem;box-shadow:0 6px 0 #1b8a4c}
+.tbar{position:relative;height:30px;background:#ffffff26;border-radius:99px;overflow:hidden}.tbar i{position:absolute;inset:0 auto 0 0;background:var(--y);border-radius:99px;transition:width .25s linear}.tbar b{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink)}.tbar.u i{background:var(--r)}.tbar.u b{color:#fff}
+.opt{display:flex;gap:.7rem;align-items:center;border-radius:12px;padding:.6rem 1rem;margin-top:.5rem;font-weight:700}.opt.w{outline:4px solid #fff}
+.q{background:#fff;color:var(--ink);border-radius:14px;padding:.8rem 1.1rem;font-size:1.25rem;font-weight:700}
+.prog{height:14px;background:#ffffff26;border-radius:99px;overflow:hidden}.prog i{display:block;height:100%;background:var(--g);transition:width .4s}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem;margin-top:.8rem}
+.gc{border-radius:16px;padding:.6rem;border:3px solid;background:#ffffff14}
+.gc header{display:flex;align-items:center;gap:.4rem;margin-bottom:.4rem;flex-wrap:wrap}
+.gc header b{flex:1}.gc header button{padding:.2rem .6rem;font-size:.9rem}
+.st{display:flex;align-items:center;gap:.4rem;width:100%;text-align:left;background:#ffffff1a;border-radius:10px;padding:.3rem .5rem;margin-top:.25rem;font-weight:500}
+.st.sel{background:#fff;color:var(--ink)}.st .n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{width:.6rem;height:.6rem;border-radius:50%;background:#888;flex:none}.dot.on{background:var(--g)}
+.av{display:inline-flex;align-items:center;justify-content:center;min-width:1.7rem;height:1.7rem;padding:0 .3rem;border-radius:99px;font-size:.95rem;white-space:nowrap;flex:none}
+.rk{display:grid;grid-template-columns:220px 1fr 90px;gap:.7rem;align-items:center;margin:.45rem 0;font-size:1.2rem}.rk i{display:block;height:28px;border-radius:8px;transition:width .6s}
+table{border-collapse:collapse;width:100%}td,th{padding:.3rem .5rem;text-align:left;border-bottom:1px solid #ffffff22}
+.warn{background:#FF4D6D55;border-radius:10px;padding:.4rem .8rem;margin-top:.5rem}
+.login{max-width:420px;margin:12vh auto;text-align:center}.login input{width:100%;text-align:center;margin:.6rem 0}
+.row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-top:.5rem}
+.sal{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;background:#ffffff1a;border-radius:12px;padding:.5rem .8rem;margin-top:.5rem}.sal .code{font-size:1.5rem}
+#conn{position:fixed;top:0;left:0;right:0;background:var(--r);text-align:center;padding:.2rem;z-index:9}
 </style></head><body>
-<header><span class="tag" id="info">Tribunal Técnico</span><span class="tag" id="fase"></span><button class="s" id="snd">🔇 Som</button><div id="tm"></div></header>
-<main id="m"></main>
-<div class="ft"><button id="go">Avançar</button><span style="opacity:.7;font-size:1rem">Espaço avança · R ranking · M som</span><button class="s" id="rkb">🏆 Ranking (R)</button><button class="s" id="rc">Recarregar casos</button><button class="s" id="rs">Zerar sala</button></div>
+<div id="conn" hidden>Sem conexão… tentando de novo</div>
+<main id="app"></main>
+<script src="config.js"></script>
 <script>
-const U="https://script.google.com/macros/s/AKfycbwtk0w7kobFnG8HGpC7BiN5WQv162n0s4KV9Ee7NpAeePDb3DJCYtoZewcWdI2BL9Zv/exec";
-const T={leitura:25,final:20};   /* em segundos; final igual a FIN no Code.gs */
-/* níveis: prefixo (sem acento) · cor · ícone · nome · segundos de discussão · multiplicador de pontos */
-const LV=[["aquec","#2ECC71","🟢","Aquecimento",45,1],["tec","#2D9CFF","🔵","Técnico",60,1.5],["peri","#FF4D6D","🔴","Perícia",90,2]];
-const lv=t=>{const s=String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();return LV.find(x=>s.startsWith(x[0]))||["","#C084FC","⚪",String(t||""),60,1]};
-const CO=["#2D9CFF","#FF4D6D","#FFC400","#2ECC71"],SH="▲◆●■";
-const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-/* ---------- som (sintetizado, sem arquivos) ---------- */
-let AC=null,armed=false,mute=false,mus=null,cur=null,st0=0;
-const au=()=>{if(!AC)try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}if(AC&&AC.state==="suspended")AC.resume();return AC};
-function tone(f,d=.15,t="sine",v=.12,at=0){const a=armed&&!mute&&au();if(!a)return;const o=a.createOscillator(),g=a.createGain(),s=a.currentTime+at;o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(a.destination);o.start(s);o.stop(s+d)}
-const seq=(a,t="triangle")=>a.forEach((f,i)=>tone(f,.28,t,.14,i*.14));
-const PAT={lobby:[262,330,392,330,262,330,392,523,294,349,440,349,294,349,440,587],play:[196,0,294,0,196,0,330,0,220,0,330,0,247,0,349,0]};
-function music(k){cur=k;clearInterval(mus);mus=null;if(!k||!armed||mute)return;const p=PAT[k];st0=0;mus=setInterval(()=>{const f=p[st0++%p.length];if(f)tone(f,.2,k==="lobby"?"triangle":"square",.05)},k==="lobby"?230:190)}
-function arm(){if(armed)return;armed=true;mute=false;au();$("snd").textContent="🔊 Som";music(cur)}
-function toggle(){if(!armed){arm();return}mute=!mute;$("snd").textContent=mute?"🔇 Som":"🔊 Som";music(mute?null:cur);if(mute)clearInterval(mus)}
-$("snd").onclick=toggle;addEventListener("pointerdown",arm,{once:true});
-let pf=null;
-function fx(f){if(f===pf)return;pf=f;
- if(f==="lobby"||f==="discussao")music("lobby");else if(f==="leitura")music("play");else{music(null);if(f==="revela")seq([392,523,659,784]);if(f==="fim")seq([523,659,784,1047,784,1047,1319])}}
-/* ---------- dados ---------- */
-let S={st:{fase:"lobby"},n:0,a:0,gs:{},top:[],pl:[],gr:[],dist:[0,0,0,0]},CASOS=[],off=0,busy=false,lr=-1,rk=false;
-const PIN=sessionStorage.pin||(sessionStorage.pin=prompt("PIN do professor")||"");
-const call=async b=>(await fetch(U,{method:"POST",body:JSON.stringify({...b,pin:PIN})})).json();
-async function loadC(){try{const r=await(await fetch(U+"?a=c&fresh=1&pin="+encodeURIComponent(PIN))).json();if(r.err==="pin"){sessionStorage.removeItem("pin");alert("PIN incorreto")}CASOS=r.c||[];const bad=CASOS.map((c,i)=>(c.g<0||c.g>=c.o.length||c.o.length<2)?i+1:0).filter(Boolean);if(bad.length)alert("Revise a planilha: gabarito ou alternativas inválidos no(s) caso(s) nº "+bad.join(", ")+" (conte a partir da linha 2).");render()}catch(e){alert("Não consegui carregar os casos.")}}
-async function poll(){try{const r=await(await fetch(U+"?a=p")).json();if(!busy){S=r;off=r.now-Date.now();render()}}catch(e){$("fase").textContent="Sem conexão…"}setTimeout(poll,2000)}
-async function avancar(){
- arm();if(busy)return;rk=false;const st=S.st,f=st.fase||"lobby",i=st.caso??-1;let b;
- if(f==="lobby"||f==="revela"){const n=f==="lobby"?0:i+1;
-  if(!CASOS.length)return alert("Nenhum caso na aba Casos da planilha.");
-  if(n>=CASOS.length)b={a:"set",patch:{fase:"fim",rev:null,fimEm:0}};
-  else{const c=CASOS[n];b={a:"set",patch:{caso:n,fase:"leitura",dur:T.leitura,rev:null,q:{t:c.t,m:c.m,q:c.q,o:c.o,n:n+1,tot:CASOS.length}}}}}
- else if(f==="leitura"){const c=CASOS[st.caso];b={a:"set",patch:{fase:"discussao",dur:c?lv(c.t)[4]:60}}}
- else if(f==="discussao")b={a:"set",patch:{fase:"final",dur:T.final}};
- else if(f==="final"){const c=CASOS[st.caso];if(!c)return alert("Casos não carregados. Clique em Recarregar casos.");b={a:"rev",g:c.g,e:c.e,w:c.w,m:lv(c.t)[5]}}
- else{render();return}
- busy=true;try{const r=await call(b);if(r.st){S.st=r.st;render()}else if(r.err==="pin"){sessionStorage.removeItem("pin");alert("PIN incorreto")}}finally{busy=false}render()}
-$("go").onclick=()=>{$("go").blur();avancar()};$("rc").onclick=loadC;
-$("rs").onclick=async()=>{if(confirm("Zerar alunos, pontos e respostas?")){await call({a:"reset"});S={st:{fase:"lobby"},n:0,a:0,gs:{},top:[],pl:[],gr:[],dist:[0,0,0,0]};rk=false;await loadC()}};
-function togRk(){rk=!rk;render()}
-$("rkb").onclick=()=>{$("rkb").blur();togRk()};
-addEventListener("keydown",e=>{if(e.repeat)return;
- if(e.code==="Space"||e.code==="ArrowRight"){e.preventDefault();if(document.activeElement)document.activeElement.blur();avancar()}
- if(e.key==="m"||e.key==="M")toggle();if(e.key==="r"||e.key==="R")togRk()});
-/* ---------- tela ---------- */
-const G=i=>S.gr[i]||["?","#aaa","⭐"];
-const rkA=()=>Object.entries(S.gs).map(([g,x])=>({g:+g,m:x.m,a:x.s/x.m})).sort((a,b)=>b.a-a.a);
-function ranking(){const t=rkA(),mx=Math.max(1,...t.map(x=>x.a));
- return t.map((x,i)=>`<div class="rk"><span style="color:${G(x.g)[1]}">${i+1}º ${G(x.g)[2]} ${esc(G(x.g)[0])}</span><i style="width:${Math.max(3,x.a/mx*100)}%;background:${G(x.g)[1]}"></i><b>${Math.round(x.a)}</b></div>`).join("")||"<p>Sem pontos ainda.</p>"}
-function podium(){const t=rkA();return `<div class="pod">${[1,0,2].map(i=>t[i]?`<div class="pc" style="height:${[270,210,160][i]}px;background:${G(t[i].g)[1]}"><b>${["🥇","🥈","🥉"][i]}</b>${G(t[i].g)[2]} ${esc(G(t[i].g)[0])}<small>${Math.round(t[i].a)} pts</small></div>`:"").join("")}</div>`}
-function topHtml(){return (S.top||[]).length?`<p style="text-align:center;margin-top:1rem">${S.top.map((x,i)=>`<span class="tp">${["🥇","🥈","🥉"][i]} ${esc(x[0])} · ${x[1]}</span>`).join("")}</p>`:""}
-function goLabel(f,st){
- if(f==="lobby"||f==="revela"){const n=f==="lobby"?0:(st.caso??-1)+1;
-  if(!CASOS.length)return "Sem casos";
-  if(n>=CASOS.length)return "Ver placar final";
-  const a=lv(CASOS[n].t),b=n?lv(CASOS[n-1].t):null;
-  return (!b||a[3]!==b[3])?`Iniciar ${a[2]} ${a[3]}`:"Próximo caso"}
- return {leitura:"Abrir discussão",discussao:"Abrir voto final",final:"Revelar",fim:"Fim"}[f]}
-function render(){
- const st=S.st,f=st.fase||"lobby",q=st.q,rev=st.rev;let h="";fx(f);
- $("rkb").textContent=rk?"← Voltar (R)":"🏆 Ranking (R)";
- $("fase").textContent={lobby:"Sala aberta",leitura:"Leia e responda",discussao:"Hora de discutir!",final:"Voto final",revela:"Resultado",fim:"Fim"}[f];
- $("info").textContent=q&&f!=="lobby"?`${lv(q.t)[2]} ${q.t} · Caso ${q.n} de ${q.tot}${q.m?" · "+q.m:""}`:"Tribunal Técnico";
- if(rk&&f!=="fim"){h=`<div class="big">🏆 Ranking dos grupos</div>${podium()}${ranking()}${topHtml()}`}
- else if(f==="lobby"){const u=location.href.split("?")[0].replace("professor.html","aluno.html");
-  h=`<div class="big">Tribunal Técnico</div><p style="text-align:center">Entre em <b style="color:var(--y)">${u}</b></p><p style="text-align:center;font-size:2rem"><b>${S.n}</b> no tribunal · ${CASOS.length} casos</p><p style="text-align:center">${LV.map(l=>{const c=CASOS.filter(x=>lv(x.t)[3]===l[3]).length;return c?`<span class="lvl" style="border-color:${l[1]}">${l[2]} ${l[3]} · ${c}</span>`:""}).join("")}</p>
-  <div class="pls">${S.gr.map((g,i)=>`<span class="pl" style="border-color:${g[1]}">${g[2]} ${esc(g[0])} · ${(S.gs[i]||{m:0}).m}</span>`).join("")}</div>
-  <div class="pls">${(S.pl||[]).map(([v,n,g,k])=>`<span class="pl" style="border-color:${G(g)[1]}"><span class="av" style="background:${k}">${esc(v)}</span>${esc(n)}</span>`).join("")}</div>`}
- else if(f==="fim"){h=`<div class="big">Placar final</div>${podium()}${ranking()}<p style="text-align:center;margin-top:1rem"></p>${topHtml()}`}
- else if(q){
-  const tot=(S.dist||[]).reduce((a,b)=>a+b,0);
-  h=`<div class="q">${esc(q.q)}</div><div class="opts">${q.o.map((o,i)=>`<div class="o ${rev?(i===rev.g?"w":"x"):""}" style="background:${CO[i]};color:${i==2?"#1d1140":"#fff"}"><s>${SH[i]}</s><span>${esc(o)}</span>${rev?`<span class="pc2">${S.dist[i]||0} (${tot?Math.round((S.dist[i]||0)/tot*100):0}%)</span>`:""}</div>`).join("")}</div>`;
-  if(f==="leitura"||f==="final")h+=`<p style="text-align:center">${S.a} de ${S.n} responderam</p>`;
-  if(f==="discussao")h+=`<p style="text-align:center;font-size:1.8rem">Converse com o grupo e convença os colegas.</p>`;
-  if(rev)h+=`<p style="text-align:center;font-size:1.5rem;margin:.8rem 0 0">${tot?Math.round((S.dist[rev.g]||0)/tot*100):0}% da turma acertou</p><div class="ex">${esc(rev.e)}<code>${esc(rev.w)}</code></div><div style="margin-top:1rem">${ranking()}</div>`}
- $("m").innerHTML=h;
- $("go").textContent=goLabel(f,st)}
-setInterval(()=>{const s=S.st,x=s.fimEm?Math.max(0,(s.fimEm-(Date.now()+off))/1000):0,r=s.fimEm?Math.ceil(x):"",t=$("tm");
- t.textContent=r;t.style.visibility=s.fimEm?"visible":"hidden";t.className=s.fimEm&&r<=5?"u":"";t.style.setProperty("--p",(s.fimEm&&s.dur?Math.min(100,x/s.dur*100):0)+"%");
- if(s.fase==="final"&&r!==""&&r!==lr&&r>0)tone(r<=5?1000:700,.07,"square",.1);lr=r},250);
-render();loadC();poll();
+const CO=["#2D9CFF","#FF4D6D","#FFC400","#2ECC71"],SH="▲◆●■",EMO=["🚀","🦉","🐢","⚡","🔥","🌊","🌸","🍀","🎯","🛠️","💾","🧠"],COL=["#22D3EE","#C084FC","#A3E635","#FBBF24","#FB7185","#38BDF8","#F472B6","#34D399","#FB923C","#818CF8","#F87171","#2DD4BF"];
+const $=i=>document.getElementById(i),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const SS={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}},del(k){try{sessionStorage.removeItem(k)}catch(e){}}};
+let NG=6,PIN=SS.get("ttpin")||"",SAL=SS.get("ttsal")||"",P=null,RK=null,SALAS=[],tab="jogo",sel=new Set(),off=0,busy=false,last="",fails=0;
+async function rpc(fn,args){const h={apikey:TT.key,"Content-Type":"application/json"};if(/^eyJ/.test(TT.key))h.Authorization="Bearer "+TT.key;
+ const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),9000);
+ try{const r=await fetch(TT.url+"/rest/v1/rpc/"+fn,{method:"POST",headers:h,body:JSON.stringify(Object.assign({p_pin:PIN},args||{})),signal:ac.signal});const j=await r.json().catch(()=>null);if(!r.ok)throw new Error((j&&j.message)||"HTTP "+r.status);return j}finally{clearTimeout(tm)}}
+const base=f=>location.href.split("?")[0].replace(/[^/]*$/,"")+f;
+const fail=e=>alert("Erro: "+(e&&e.message||e));
+
+/* ---------- login e salas ---------- */
+window.entrar=async()=>{PIN=$("pin").value.trim();if(!PIN)return;
+ try{SALAS=await rpc("tt_p_salas");SS.set("ttpin",PIN);SAL="";SS.del("ttsal");draw(true)}catch(e){PIN="";alert(e.message==="PIN incorreto"?"PIN incorreto":"Erro: "+e.message)}};
+window.sairPin=()=>{PIN="";SAL="";P=null;SS.del("ttpin");SS.del("ttsal");draw(true)};
+async function loadSalas(){try{SALAS=await rpc("tt_p_salas")}catch(e){if(/PIN/.test(e.message))return sairPin();}draw(true)}
+window.novaSala=async()=>{const n=$("sn").value.trim()||"Turma",g=+$("sg").value;
+ try{const r=await rpc("tt_p_criar_sala",{p_nome:n,p_grupos:g});abrir(r.id)}catch(e){fail(e)}};
+window.abrir=id=>{SAL=id;SS.set("ttsal",id);P=null;RK=null;tab="jogo";sel.clear();last="";draw(true);poll()};
+window.trocarSala=()=>{SAL="";SS.del("ttsal");P=null;loadSalas()};
+window.apagarSala=async id=>{if(!confirm("Apagar esta sala, com alunos e pontos?"))return;try{await rpc("tt_p_apagar_sala",{p_sala:id});loadSalas()}catch(e){fail(e)}};
+
+/* ---------- jogo ---------- */
+const PH={lobby:"Sala aberta",mostrar:"Caso na tela · respostas bloqueadas",voto1:"1º voto liberado",discussao:"Discussão",voto2:"Voto final liberado",revela:"Resultado",fim:"Fim"};
+function goLabel(){const s=P.sala,f=s.fase,n=(s.caso||0)+1;
+ return {lobby:"▶ Mostrar o 1º caso",mostrar:"🔓 Liberar respostas (1º voto)",voto1:"💬 Abrir discussão",discussao:"🗳️ Liberar voto final",voto2:"✅ Revelar resposta",
+  revela:n>P.casos?"🏁 Encerrar jogo":"➡ Próximo caso ("+n+" de "+P.casos+")",fim:"Jogo encerrado"}[f]}
+window.go=async()=>{if(busy||!P)return;const s=P.sala;if(s.fase==="fim")return;
+ if(s.fase==="lobby"){const sg=P.alunos.filter(a=>!a.g).length;if(!P.alunos.length)return alert("Ainda não há alunos na sala.");
+  if(sg&&!confirm(sg+" aluno(s) ainda sem grupo. Começar assim mesmo?"))return}
+ busy=true;draw(true);try{await rpc("tt_p_avancar",{p_sala:SAL,p_de:s.fase});await poll()}catch(e){fail(e)}finally{busy=false;draw(true)}};
+window.mais=async()=>{try{await rpc("tt_p_tempo",{p_sala:SAL,p_delta:10});poll()}catch(e){fail(e)}};
+window.rankTelao=async on=>{try{await rpc("tt_p_mostrar_rank",{p_sala:SAL,p_on:on});poll()}catch(e){fail(e)}};
+window.zerar=async()=>{if(!confirm("Zerar pontos e voltar ao início? Os alunos e grupos continuam."))return;try{await rpc("tt_p_zerar",{p_sala:SAL});poll()}catch(e){fail(e)}};
+
+/* ---------- alunos e grupos ---------- */
+window.tog=id=>{sel.has(id)?sel.delete(id):sel.add(id);draw(true)};
+window.limpaSel=()=>{sel.clear();draw(true)};
+window.mover=async g=>{if(!sel.size)return;try{await rpc("tt_p_mover",{p_sala:SAL,p_alunos:[...sel],p_grupo:g});sel.clear();await poll()}catch(e){fail(e)}};
+window.remover=async()=>{if(!sel.size)return;if(!confirm("Remover "+sel.size+" aluno(s) da sala? Eles voltam para a tela de entrada."))return;try{await rpc("tt_p_remover",{p_sala:SAL,p_alunos:[...sel]});sel.clear();await poll()}catch(e){fail(e)}};
+window.autoGrupos=async()=>{try{await rpc("tt_p_grupos_auto",{p_sala:SAL,p_n:+$("ng").value});await poll()}catch(e){fail(e)}};
+window.novoGrupo=async()=>{const n=prompt("Nome do novo grupo:");if(!n)return;const i=P.grupos.length;
+ try{await rpc("tt_p_grupo_salvar",{p_sala:SAL,p_id:null,p_nome:n,p_cor:COL[i%12],p_emoji:EMO[i%12]});await poll()}catch(e){fail(e)}};
+window.editaGrupo=async id=>{const g=P.grupos.find(x=>x.id===id),n=prompt("Nome do grupo:",g.nome);if(!n)return;
+ try{await rpc("tt_p_grupo_salvar",{p_sala:SAL,p_id:id,p_nome:n,p_cor:g.cor,p_emoji:g.emoji});await poll()}catch(e){fail(e)}};
+window.apagaGrupo=async id=>{if(!confirm("Apagar o grupo? Os alunos ficam sem grupo."))return;try{await rpc("tt_p_grupo_apagar",{p_sala:SAL,p_id:id});await poll()}catch(e){fail(e)}};
+window.sortear=async t=>{if(t&&!confirm("Sortear TODOS os alunos de novo, desfazendo os grupos atuais?"))return;try{await rpc("tt_p_sortear",{p_sala:SAL,p_todos:t});await poll()}catch(e){fail(e)}};
+window.livre=async v=>{try{await rpc("tt_p_config",{p_sala:SAL,p_nome:null,p_livre:v});poll()}catch(e){fail(e)}};
+
+/* ---------- ranking (só o professor vê aqui) ---------- */
+async function loadRk(){try{RK=await rpc("tt_p_ranking",{p_sala:SAL});draw(true)}catch(e){}}
+window.csv=()=>{if(!RK)return;const gn={};P.grupos.forEach(g=>gn[g.id]=g.nome);
+ const L=["Grupo;Aluno;Pontos",...RK.alunos.map(a=>[gn[a.g]||"(sem grupo)",a.nome,a.pts].join(";"))];
+ const b=new Blob(["﻿"+L.join("\n")],{type:"text/csv"}),u=document.createElement("a");u.href=URL.createObjectURL(b);u.download="tribunal-"+P.sala.codigo+".csv";u.click()};
+window.setTab=t=>{tab=t;if(t==="rank")loadRk();draw(true)};
+
+/* ---------- telas ---------- */
+function loginV(){return `<div class="login"><h1>Tribunal Técnico</h1><p>Área do professor</p><input id="pin" type="password" placeholder="PIN" autofocus onkeydown="if(event.key==='Enter')entrar()"><button class="p" style="width:100%" onclick="entrar()">Entrar</button></div>`}
+function salasV(){return `<div class="bar"><h1>Suas salas</h1><span class="sp"></span><button onclick="sairPin()">Sair</button></div>
+ <div class="card"><b>Criar nova sala</b><div class="row"><input id="sn" placeholder="Nome (ex.: 1°C)" maxlength="40"><label>Grupos: <select id="sg"><option value="0">criar depois</option>${[3,4,5,6,7,8,9,10,12].map(n=>`<option ${n===6?"selected":""}>${n}</option>`).join("")}</select></label><button class="p" onclick="novaSala()">Criar sala</button></div></div>
+ ${SALAS.map(s=>`<div class="sal"><span class="code">${esc(s.codigo)}</span><b>${esc(s.nome||"Sem nome")}</b><span class="pill">${s.alunos} alunos</span><span class="pill">${esc(PH[s.fase]||s.fase)}</span><span class="sp"></span><button class="p" onclick="abrir('${s.id}')">Abrir</button><button class="d" onclick="apagarSala('${s.id}')">Apagar</button></div>`).join("")||`<p>Nenhuma sala ainda.</p>`}`}
+
+function jogoV(){const s=P.sala,f=s.fase,q=s.q,tot=P.alunos.length,r=f==="voto1"?P.resp.prov:P.resp.fin,voting=f==="voto1"||f==="voto2";
+ let h=`<div class="card"><div class="bar"><span class="pill">${esc(PH[f])}</span>${q?`<span class="pill">${esc(q.t)} · Caso ${q.n} de ${q.tot}</span>`:""}<span class="sp"></span>${s.fim?`<button onclick="mais()">+10 s</button>`:""}</div>
+ ${s.fim&&f!=="revela"?`<div class="tbar" id="tb" style="margin-top:.6rem"><i id="tbi"></i><b id="tbn"></b></div>`:""}
+ <button class="p biggo" style="margin-top:.7rem" onclick="this.blur();go()" ${busy||f==="fim"?"disabled":""}>${esc(goLabel())}</button>
+ <div style="opacity:.7;font-size:.9rem;margin-top:.3rem">Espaço também avança.</div></div>`;
+ if(voting){const falta=P.alunos.filter(a=>!(f==="voto1"?a.prov:a.fin));
+  h+=`<div class="card"><b>${r} de ${tot} responderam</b><div class="prog" style="margin:.4rem 0"><i style="width:${tot?r/tot*100:0}%"></i></div>${falta.length?`<div style="opacity:.85;font-size:.95rem">Faltam: ${falta.slice(0,20).map(a=>esc(a.nome.split(" ")[0])+(a.on?"":" (offline)")).join(", ")}${falta.length>20?"…":""}</div>`:"<div>Todos responderam ✔</div>"}</div>`}
+ if(q){h+=`<div class="card"><div class="q">${esc(q.q)}</div>${q.o.map((o,i)=>`<div class="opt ${P.gab&&P.gab.g===i?"w":""}" style="background:${CO[i]};color:${i==2?"#1d1140":"#fff"}"><span>${SH[i]}</span><span style="flex:1">${esc(o)}</span>${P.gab&&P.gab.g===i?"<span>✔ gabarito (só você vê)</span>":""}${f==="revela"&&s.dist?`<span class="pill" style="background:#0004">${s.dist[i]||0}</span>`:""}</div>`).join("")}
+  ${P.gab?`<div style="margin-top:.6rem;opacity:.9;font-size:.95rem"><b>Explicação:</b> ${esc(P.gab.e)}<br><b>Verificar:</b> ${esc(P.gab.w)}</div>`:""}</div>`}
+ h+=`<div class="card bar"><span>📺 Ranking no telão:</span><b>${s.rank?"VISÍVEL":"oculto"}</b><button onclick="rankTelao(${!s.rank})">${s.rank?"Ocultar":"Mostrar no telão"}</button><span class="sp"></span><button class="d" onclick="zerar()">Zerar jogo</button></div>`;
+ return h}
+
+function alunosV(){const al=P.alunos,sg=al.filter(a=>!a.g);
+ const chip=a=>`<button class="st ${sel.has(a.id)?"sel":""}" onclick="tog('${a.id}')"><span class="dot ${a.on?"on":""}" title="${a.on?"conectado":"sem sinal"}"></span><span class="av" style="background:${esc(a.cor)}">${esc(a.avatar)}</span><span class="n">${esc(a.nome)}</span><span>${a.pts}</span></button>`;
+ const mv=g=>sel.size?`<button class="p" onclick="mover(${g?`'${g}'`:"null"})">Mover ${sel.size} aqui</button>`:"";
+ return `<div class="card"><div class="bar"><span>Grupos:</span><select id="ng" onchange="NG=+this.value">${[3,4,5,6,7,8,9,10,11,12].map(n=>`<option ${n===NG?"selected":""}>${n}</option>`).join("")}</select><button onclick="autoGrupos()">Criar até esse total</button><button onclick="novoGrupo()">+ Grupo com nome</button><span class="sp"></span>
+  <button onclick="sortear(false)" ${sg.length&&P.grupos.length?"":"disabled"}>🎲 Sortear quem está sem grupo (${sg.length})</button><button onclick="sortear(true)" ${al.length&&P.grupos.length?"":"disabled"}>🎲 Sortear todos</button></div>
+  <div class="bar" style="margin-top:.6rem"><label><input type="checkbox" ${P.sala.livre?"checked":""} onchange="livre(this.checked)" style="width:1.1rem;height:1.1rem"> Alunos escolhem o próprio grupo ao entrar</label><span class="sp"></span>
+  <span>${sel.size?sel.size+" selecionado(s):":"Toque nos alunos para selecionar"}</span>${sel.size?`<button class="d" onclick="remover()">Remover da sala</button><button onclick="limpaSel()">Limpar seleção</button>`:""}</div></div>
+ <div class="grid">${sg.length||!P.grupos.length?`<div class="gc" style="border-color:#fff8"><header><b>Sem grupo (${sg.length})</b>${mv(null)}</header>${sg.map(chip).join("")}</div>`:""}
+ ${P.grupos.map(g=>{const m=al.filter(a=>a.g===g.id);return `<div class="gc" style="border-color:${esc(g.cor)}"><header><b>${esc(g.emoji)} ${esc(g.nome)} (${m.length})</b>${mv(g.id)}<button onclick="editaGrupo('${g.id}')" title="Renomear">✎</button><button onclick="apagaGrupo('${g.id}')" title="Apagar">🗑</button></header>${m.map(chip).join("")}</div>`}).join("")}</div>`}
+
+function rankV(){if(!RK)return `<div class="card">Carregando…</div>`;const mx=Math.max(1,...RK.grupos.map(g=>+g.media)),gm={};P.grupos.forEach(g=>gm[g.id]=g);
+ return `<div class="card"><div class="bar"><h2 style="margin:0">Ranking dos grupos <small style="font-weight:500;opacity:.8">(média de pontos por aluno)</small></h2><span class="sp"></span><button onclick="csv()">⬇ Baixar CSV</button></div>
+ ${RK.grupos.map((g,i)=>`<div class="rk"><span style="color:${esc(g.cor)}">${["🥇","🥈","🥉"][i]||i+1+"º"} ${esc(g.emoji)} ${esc(g.nome)} <small style="opacity:.7">(${g.n})</small></span><i style="width:${Math.max(2,g.media/mx*100)}%;background:${esc(g.cor)}"></i><b>${g.media}</b></div>`).join("")||"Sem grupos."}</div>
+ <div class="card"><h2 style="margin-top:0">Ranking individual</h2><table><tr><th>#</th><th>Aluno</th><th>Grupo</th><th>Pontos</th></tr>${RK.alunos.map((a,i)=>`<tr><td>${i+1}</td><td>${esc(a.avatar)} ${esc(a.nome)}</td><td>${esc((gm[a.g]||{}).nome||"—")}</td><td>${a.pts}</td></tr>`).join("")}</table></div>
+ <div class="card"><h2 style="margin-top:0">Casos em que a turma mais errou</h2>${[...RK.casos].sort((a,b)=>a.pct-b.pct).slice(0,8).map(c=>`<div class="rk" style="grid-template-columns:1fr 90px"><span>Caso ${c.n} · ${esc(c.tema||"")}</span><b>${c.pct}% acertaram</b></div>`).join("")||"Ainda sem casos revelados."}</div>`}
+
+function salaV(){const s=P.sala,t=(id,l)=>`<button class="${tab===id?"on":""}" onclick="setTab('${id}')">${l}</button>`;
+ return `<div class="bar"><span class="code" title="Código para os alunos">${esc(s.codigo)}</span><div><b>${esc(s.nome||"Sala")}</b><div style="opacity:.8;font-size:.9rem">${P.alunos.length} alunos · ${P.alunos.filter(a=>a.on).length} conectados</div></div><span class="sp"></span>
+  <button onclick="window.open('${base("telao.html")}?sala=${esc(s.codigo)}','telao')">📺 Abrir telão</button><button onclick="navigator.clipboard&&navigator.clipboard.writeText('${base("aluno.html")}?sala=${esc(s.codigo)}').then(()=>alert('Link dos alunos copiado'))">🔗 Link dos alunos</button><button onclick="trocarSala()">Trocar sala</button></div>
+  <div class="tabs">${t("jogo","🎮 Jogo")}${t("alunos","👥 Alunos e grupos")}${t("rank","🏆 Ranking")}</div>
+  ${tab==="jogo"?jogoV():tab==="alunos"?alunosV():rankV()}`}
+
+function draw(force){
+ const app=$("app");let h;
+ if(!PIN)h=loginV();else if(!SAL)h=salasV();else if(!P)h=`<p>Carregando sala…</p>`;else h=salaV()+"";
+ const key=h+busy+[...sel];
+ if(!force&&key===last)return;
+ if(!PIN&&$("pin")&&last===h)return;
+ last=key;const a=document.activeElement,id=a&&a.id,y=scrollY;app.innerHTML=h;scrollTo(0,y);if(id&&$(id)&&id!=="pin")$(id).focus();tick()}
+async function poll(){if(!PIN||!SAL)return;
+ try{const t0=Date.now(),r=await rpc("tt_p_painel",{p_sala:SAL}),t1=Date.now();fails=0;$("conn").hidden=true;
+  if(!r.ok){SAL="";SS.del("ttsal");P=null;return loadSalas()}
+  off=r.agora-(t0+t1)/2;const a=Object.assign({},r,{agora:0});P=r;if(tab==="rank")loadRk();draw(false)}
+ catch(e){if(/PIN/.test(e.message))return sairPin();if(++fails>=2)$("conn").hidden=false}}
+function tick(){if(!P)return;const e=P.sala.fim,b=$("tbi");if(!e||!b)return;const r=Math.max(0,(e-(Date.now()+off))/1000);
+ b.style.width=Math.min(100,r/(P.sala.dur||1)*100)+"%";$("tbn").textContent=Math.ceil(r)+"s";$("tb").classList.toggle("u",r<=5)}
+setInterval(tick,250);
+(function loop(){poll();setTimeout(loop,1500)})();
+addEventListener("keydown",e=>{if(e.code==="Space"&&P&&tab==="jogo"&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();if(e.repeat)return;if(document.activeElement)document.activeElement.blur();go()}});
+if(PIN&&!SAL)loadSalas();else draw(true);
 </script></body></html>

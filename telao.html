@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tribunal Técnico · Telão</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#3B1C8C;--y:#FFC400;--g:#2ECC71;--ink:#1d1140}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#fff;font:500 1.3rem/1.35 Fredoka,system-ui,sans-serif;overflow-x:hidden;
+ background:linear-gradient(#ffffff0b 1px,transparent 1px) 0 0/36px 36px,linear-gradient(90deg,#ffffff0b 1px,transparent 1px) 0 0/36px 36px,radial-gradient(circle at 15% 10%,#5b2fd0 0,transparent 45%),radial-gradient(circle at 90% 90%,#7a2bc4 0,transparent 40%),var(--bg);background-attachment:fixed}
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;gap:1rem}
+.tag{background:#ffffff26;border-radius:99px;padding:.3rem 1.1rem;font-size:1.1rem;border:2px solid transparent}
+#tm{visibility:hidden;position:relative;isolation:isolate;display:grid;place-items:center;width:90px;height:90px;border-radius:50%;background:conic-gradient(var(--rc,var(--y)) var(--p,0%),#ffffff33 0);color:#fff;font-size:2.5rem;font-weight:700}
+#tm::after{content:"";position:absolute;inset:8px;border-radius:50%;background:#2a1370;z-index:-1}
+#tm.u{--rc:#FF4D6D;animation:p .5s infinite alternate}@keyframes p{to{transform:scale(1.12)}}
+main{padding:0 2rem 1.5rem;max-width:1300px;margin:0 auto}
+.q{background:#fff;color:var(--ink);border-radius:22px;padding:1.6rem 2.2rem;font-size:2.2rem;line-height:1.25;font-weight:700;box-shadow:0 8px 0 #0003;text-align:center}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.o{display:flex;align-items:center;gap:1rem;border-radius:16px;padding:1.1rem 1.5rem;font-size:1.8rem;font-weight:700;box-shadow:0 6px 0 #0003}
+.o .t{flex:1}.o.x{opacity:.28}.o.w{outline:6px solid #fff;transform:scale(1.02)}.o .pc{font-size:1.3rem;background:#0003;border-radius:99px;padding:.1rem .8rem}
+.ex{background:#ffffff1f;border-radius:16px;padding:1rem 1.5rem;margin-top:1rem;font-size:1.3rem}
+.ex code{display:block;margin-top:.5rem;color:var(--y);font-family:Consolas,monospace;font-size:1.15rem}
+.big{text-align:center;font-size:3.4rem;font-weight:700;margin:.4rem 0}
+.c{text-align:center}
+.pls{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1rem}.pl{background:#ffffff22;border:3px solid;border-radius:99px;padding:.25rem 1rem;font-size:1.2rem}
+.code{display:inline-block;font-size:6rem;font-weight:700;letter-spacing:.25em;background:#fff;color:var(--ink);border-radius:22px;padding:0 1.5rem 0 2rem;box-shadow:0 8px 0 #0003}
+.rules{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;font-size:1.3rem;margin:.8rem auto 0;max-width:760px;text-align:left}.rules b{color:var(--y);text-align:right}
+.card{background:#ffffff1f;border-radius:18px;padding:1rem 1.6rem;margin:1.2rem auto 0;max-width:820px}
+.prog{height:18px;background:#ffffff26;border-radius:99px;overflow:hidden;max-width:700px;margin:.5rem auto}.prog i{display:block;height:100%;background:var(--g);transition:width .4s}
+.rk{display:grid;grid-template-columns:260px 1fr 90px;gap:.8rem;align-items:center;margin:.55rem 0;font-size:1.6rem}.rk i{display:block;height:36px;border-radius:10px;transition:width .8s}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:1rem;margin:1rem 0}.pc2{width:210px;border-radius:16px 16px 0 0;display:flex;flex-direction:column;align-items:center;padding-top:.8rem;color:var(--ink);font-weight:700;font-size:1.5rem;text-align:center}.pc2 b{font-size:2.6rem}.pc2 small{font-size:1.3rem}
+.sn{position:fixed;right:.8rem;bottom:.6rem;font:inherit;font-size:.9rem;background:#ffffff26;color:#fff;border:0;border-radius:99px;padding:.3rem .9rem;cursor:pointer;opacity:.6}
+#err{position:fixed;top:0;left:0;right:0;text-align:center;background:#FF4D6D;font-size:1rem}
+</style></head><body>
+<div id="err" hidden>Sem conexão…</div>
+<header><span class="tag" id="info">Tribunal Técnico</span><span class="tag" id="fase"></span><div id="tm"></div></header>
+<main id="m"></main>
+<button class="sn" id="snd">🔇 Som (M)</button>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" async onerror="void 0"></script>
+<script>
+const CO=["#2D9CFF","#FF4D6D","#FFC400","#2ECC71"],SH="▲◆●■";
+const LV=[["aquec","#2ECC71","🟢","Aquecimento","×1"],["tec","#2D9CFF","🔵","Técnico","×1,5"],["peri","#FF4D6D","🔴","Perícia","×2"]];
+const lv=t=>{const s=String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();return LV.find(x=>s.startsWith(x[0]))||["","#C084FC","⚪",String(t||""),""]};
+const $=i=>document.getElementById(i),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const COD=(new URLSearchParams(location.search).get("sala")||"").toUpperCase();
+let S=null,off=0,last="",sb=null,chan=null,snd=false,AC=null,lastF=null,lastSec=-1;
+async function rpc(fn,args){const h={apikey:TT.key,"Content-Type":"application/json"};if(/^eyJ/.test(TT.key))h.Authorization="Bearer "+TT.key;
+ const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),9000);
+ try{const r=await fetch(TT.url+"/rest/v1/rpc/"+fn,{method:"POST",headers:h,body:JSON.stringify(args||{}),signal:ac.signal});const j=await r.json().catch(()=>null);if(!r.ok)throw new Error((j&&j.message)||"HTTP "+r.status);return j}finally{clearTimeout(tm)}}
+function tone(f,d=.15,t="triangle",v=.12,at=0){if(!snd)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+at;o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+const togSnd=()=>{snd=!snd;$("snd").textContent=snd?"🔊 Som (M)":"🔇 Som (M)";tone(660,.1)};$("snd").onclick=togSnd;addEventListener("keydown",e=>{if(e.key==="m"||e.key==="M")togSnd()});
+const aluno=()=>location.href.split("?")[0].replace(/telao\.html.*$/,"aluno.html");
+
+function rankHtml(R){const gs=R.grupos,mx=Math.max(1,...gs.map(g=>+g.media));
+ const pod=[1,0,2].map(i=>gs[i]?`<div class="pc2" style="height:${[270,210,160][i]}px;background:${esc(gs[i].cor)}"><b>${["🥇","🥈","🥉"][i]}</b>${esc(gs[i].emoji)} ${esc(gs[i].nome)}<small>${gs[i].media} pts</small></div>`:"").join("");
+ const top=R.alunos.slice(0,5).map((a,i)=>`<span class="pl" style="border-color:#fff6">${["🥇","🥈","🥉","4º","5º"][i]} ${esc(a.avatar)} ${esc(a.nome)} · ${a.pts}</span>`).join("");
+ return `<div class="big">🏆 Ranking dos grupos</div><div class="pod">${pod}</div>${gs.map((g,i)=>`<div class="rk"><span style="color:${esc(g.cor)}">${i+1}º ${esc(g.emoji)} ${esc(g.nome)}</span><i style="width:${Math.max(2,g.media/mx*100)}%;background:${esc(g.cor)}"></i><b>${g.media}</b></div>`).join("")}<p class="c" style="font-size:1.1rem;opacity:.8">Média de pontos por aluno do grupo</p><div class="pls">${top}</div>`}
+
+function view(){
+ const s=S.sala,f=s.fase,q=s.q;
+ if(S.rank&&f!=="lobby")return rankHtml(S.rank);
+ if(f==="lobby"){const url=aluno().replace(/^https?:\/\//,"");
+  return `<div class="c"><div style="font-size:1.6rem">Entre em <b style="color:var(--y)">${esc(url)}</b> e digite o código</div><div class="code">${esc(s.codigo)}</div>
+  <div style="font-size:2rem;margin-top:.8rem"><b>${S.n}</b> no tribunal</div></div>
+  <div class="pls">${S.grupos.map(g=>`<span class="pl" style="border-color:${esc(g.cor)}">${esc(g.emoji)} ${esc(g.nome)} · ${g.n}</span>`).join("")}</div>
+  <div class="card"><b style="font-size:1.5rem">Como ganhar pontos</b><div class="rules"><b>+100</b><span>acertar no voto final</span><b>até +30</b><span>rapidez no voto final</span><b>+20</b><span>errou no 1º voto e acertou no final</span><b>+50</b><span>consenso: todos do grupo acertaram</span><b>×1 · ×1,5 · ×2</b><span>nível Aquecimento · Técnico · Perícia</span></div></div>`}
+ if(f==="fim")return `<div class="big">Fim do julgamento</div><p class="c">Obrigado por participar!</p>`;
+ if(!q)return "";
+ const rev=s.rev,tot=(s.dist||[]).reduce((a,b)=>a+b,0),resp=f==="voto1"?S.resp.prov:S.resp.fin;
+ let h=`<div class="q">${esc(q.q)}</div><div class="opts">${q.o.map((o,i)=>`<div class="o ${rev?(i===rev.g?"w":"x"):""}" style="background:${CO[i]};color:${i==2?"#1d1140":"#fff"}"><span>${SH[i]}</span><span class="t">${esc(o)}</span>${rev?`<span class="pc">${(s.dist||[])[i]||0} (${tot?Math.round(((s.dist||[])[i]||0)/tot*100):0}%)</span>`:""}</div>`).join("")}</div>`;
+ if(f==="mostrar")h+=`<p class="c" style="font-size:1.8rem">🔒 Leiam com atenção. As respostas serão liberadas pelo professor.</p>`;
+ if(f==="voto1"||f==="voto2")h+=`<p class="c" style="font-size:1.8rem;margin-bottom:0">${f==="voto1"?"1º voto":"VOTO FINAL (vale pontos)"} · <b>${resp} de ${S.n}</b> responderam</p><div class="prog"><i style="width:${S.n?resp/S.n*100:0}%"></i></div>`;
+ if(f==="discussao")h+=`<p class="c" style="font-size:2rem">💬 Converse com o grupo e convença os colegas.</p>`;
+ if(f==="revela")h+=`<p class="c" style="font-size:1.8rem;margin:.8rem 0 0">${tot?Math.round(((s.dist||[])[rev.g]||0)/tot*100):0}% da turma acertou</p><div class="ex">${esc(rev.e)}<code>${esc(rev.w)}</code></div>`;
+ return h}
+
+function draw(){
+ const s=S.sala,f=s.fase,q=s.q,N=q?lv(q.t):null;
+ $("fase").textContent={lobby:"Sala aberta",mostrar:"Leia o caso",voto1:"1º voto",discussao:"Hora de discutir!",voto2:"Voto final",revela:"Resultado",fim:"Fim"}[f]||"";
+ const i=$("info");i.textContent=q&&f!=="lobby"?`${N[2]} ${N[3]} · Caso ${q.n} de ${q.tot} · ${q.m||""} · vale ${N[4]}`:"Tribunal Técnico";i.style.borderColor=q&&f!=="lobby"?N[1]:"transparent";
+ const html=view();if(html!==last){$("m").innerHTML=html;last=html}
+ if(f!==lastF){if(f==="revela"){[392,523,659,784].forEach((x,k)=>tone(x,.28,"triangle",.14,k*.14))}if(f==="fim")[523,659,784,1047].forEach((x,k)=>tone(x,.3,"triangle",.14,k*.15));lastF=f}}
+async function poll(){
+ try{const t0=Date.now(),r=await rpc("tt_estado_pub",{p_codigo:COD}),t1=Date.now();
+  if(!r.ok){$("m").innerHTML=`<div class="big">${esc(r.erro||"Sala não encontrada")}</div><p class="c">Abra o telão pelo botão “Abrir telão” da página do professor.</p>`;last="";return}
+  off=r.agora-(t0+t1)/2;S=r;$("err").hidden=true;startRt();draw()}
+ catch(e){$("err").hidden=false}}
+function startRt(){if(chan||!S||!window.supabase)return;try{sb=sb||window.supabase.createClient(TT.url,TT.key);chan=sb.channel("telao-"+S.sala.id).on("postgres_changes",{event:"*",schema:"public",table:"tt_sala",filter:"id=eq."+S.sala.id},()=>poll()).subscribe()}catch(e){chan=null}}
+setInterval(()=>{if(!S)return;const s=S.sala,e=s.fim,t=$("tm");
+ const x=e?Math.max(0,(e-(Date.now()+off))/1000):0,r=Math.ceil(x);
+ t.textContent=e?r:"";t.style.visibility=e&&s.fase!=="revela"?"visible":"hidden";t.className=e&&r<=5?"u":"";t.style.setProperty("--p",(e&&s.dur?Math.min(100,x/s.dur*100):0)+"%");
+ if(s.fase==="voto2"&&e&&r!==lastSec&&r>0&&r<=5)tone(1000,.07,"square",.1);lastSec=r},250);
+(function loop(){poll();setTimeout(loop,1500)})();
+</script></body></html>
